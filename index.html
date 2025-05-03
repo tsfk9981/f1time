@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 2025 Schedule - Local Time</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    async function loadSchedule() {
+      const response = await fetch("f1_2025_schedule_with_country_code.json");
+      const data = await response.json();
+      const container = document.getElementById("schedule");
+
+      const now = new Date();
+      let nextGP = null;
+      let nextGPTime = null;
+
+      for (const [gp, details] of Object.entries(data)) {
+        const raceUtc = new Date(details["Race"] + " UTC");
+        if (raceUtc > now && (!nextGPTime || raceUtc < nextGPTime)) {
+          nextGP = { name: gp, details };
+          nextGPTime = raceUtc;
+        }
+      }
+
+      if (nextGP) {
+        const highlight = createGPBlock(nextGP.name, nextGP.details, true);
+        const nextGpContainer = document.getElementById("next-gp");
+        nextGpContainer.appendChild(highlight);
+      }
+
+      for (const [gp, details] of Object.entries(data)) {
+        const block = createGPBlock(gp, details, false);
+        container.appendChild(block);
+      }
+    }
+
+    function createGPBlock(gp, details, highlight) {
+      const events = ["FP1", "FP2", "FP3", "Sprint Qualifying", "Sprint", "Qualifying", "Race"];
+      const div = document.createElement("div");
+      div.className = highlight
+        ? "bg-red-50 border-l-4 border-red-600 p-4 rounded-lg shadow"
+        : "bg-white border border-gray-200 p-4 rounded-lg shadow";
+
+      const roundNo = details["Round No."] || "?";
+      const countryCode = details["Country Code"]?.toLowerCase();
+      const flagImg = countryCode
+        ? `<img src="https://flagcdn.com/w40/${countryCode}.png" alt="${gp} flag" class="inline-block mr-2 w-6 h-4 rounded-sm shadow-sm" />`
+        : "";
+
+      const titleClass = highlight
+        ? "text-3xl font-extrabold text-red-700 mb-2 tracking-tight"
+        : "text-lg font-semibold text-red-700 mb-2";
+
+      div.innerHTML = `<h2 class="${titleClass}">${flagImg}Rd${roundNo} ${gp}</h2>`;
+
+      let soonestEvent = null;
+      let soonestTime = null;
+      const now = new Date();
+
+      for (const event of events) {
+        const utcStr = details[event];
+        if (!utcStr) continue;
+        const eventDate = new Date(utcStr + " UTC");
+        if (eventDate > now && (!soonestTime || eventDate < soonestTime)) {
+          soonestEvent = event;
+          soonestTime = eventDate;
+        }
+      }
+
+      const table = document.createElement("table");
+      table.className = "table-auto w-full";
+
+      for (const event of events) {
+        const utcStr = details[event];
+        if (!utcStr) continue;
+        const utcDate = new Date(utcStr + " UTC");
+        const localTime = utcDate.toLocaleString(undefined, {
+          dateStyle: "medium",
+          timeStyle: "short"
+        });
+
+        const isUpcoming = highlight && event === soonestEvent;
+
+        const tr = document.createElement("tr");
+        tr.className = isUpcoming ? "bg-yellow-100 font-semibold" : "";
+
+        const tdTime = document.createElement("td");
+        tdTime.className = `whitespace-nowrap font-mono pr-4 py-1 w-48 ${
+          highlight ? "text-base lg:text-lg text-gray-800" : "text-sm text-gray-800"
+        }`;
+        tdTime.textContent = localTime;
+
+        const tdName = document.createElement("td");
+        tdName.className = `${
+          highlight ? "text-base lg:text-lg text-gray-700" : "text-sm text-gray-700"
+        } py-1`;
+        tdName.textContent = event;
+
+        tr.appendChild(tdTime);
+        tr.appendChild(tdName);
+        table.appendChild(tr);
+      }
+
+      div.appendChild(table);
+      return div;
+    }
+
+    window.onload = loadSchedule;
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-4xl font-extrabold mb-8 text-center text-red-700 tracking-tight">
+      F1 2025 Schedule - Local Time
+    </h1>
+    <div id="next-gp" class="mb-10"></div>
+    <div id="schedule" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</body>
+</html>
