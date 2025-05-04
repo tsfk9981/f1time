@@ -16,7 +16,7 @@
       let nextGPTime = null;
 
       for (const [gp, details] of Object.entries(data)) {
-        const raceUtc = new Date(details["Race"] + " UTC");
+        const raceUtc = parseDateWithOffset(details["Race"], details["Time Zone"]);
         if (raceUtc > now && (!nextGPTime || raceUtc < nextGPTime)) {
           nextGP = { name: gp, details };
           nextGPTime = raceUtc;
@@ -33,6 +33,18 @@
         const block = createGPBlock(gp, details, false);
         container.appendChild(block);
       }
+    }
+
+    function parseDateWithOffset(dateStr, timeZoneStr) {
+      const offsetMatch = timeZoneStr.match(/UTC([+-]\d+)/);
+      const offsetHours = offsetMatch ? parseInt(offsetMatch[1], 10) : 0;
+
+      const [datePart, timePart] = dateStr.split(" ");
+      const [year, month, day] = datePart.split("-").map(Number);
+      const [hour, minute] = timePart.split(":").map(Number);
+
+      // ローカル時間をUTCに補正
+      return new Date(Date.UTC(year, month - 1, day, hour - offsetHours, minute));
     }
 
     function createGPBlock(gp, details, highlight) {
@@ -57,11 +69,12 @@
       let soonestEvent = null;
       let soonestTime = null;
       const now = new Date();
+      const timeZone = details["Time Zone"];
 
       for (const event of events) {
         const utcStr = details[event];
         if (!utcStr) continue;
-        const eventDate = new Date(utcStr + " UTC");
+        const eventDate = parseDateWithOffset(utcStr, timeZone);
         if (eventDate > now && (!soonestTime || eventDate < soonestTime)) {
           soonestEvent = event;
           soonestTime = eventDate;
@@ -74,7 +87,7 @@
       for (const event of events) {
         const utcStr = details[event];
         if (!utcStr) continue;
-        const utcDate = new Date(utcStr + " UTC");
+        const utcDate = parseDateWithOffset(utcStr, timeZone);
         const localTime = utcDate.toLocaleString(undefined, {
           dateStyle: "medium",
           timeStyle: "short"
