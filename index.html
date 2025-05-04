@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>F1 2025 Schedule - Local Time</title>
+  <title>F1 2025 Schedule @ Your Local Time</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     async function loadSchedule() {
-      const response = await fetch("f1_2025_schedule_with_country_code.json");
+      const response = await fetch("f1_2025_schedule.json");
       const data = await response.json();
       const container = document.getElementById("schedule");
 
