@@ -36,14 +36,13 @@
     }
 
     function parseDateWithOffset(dateStr, timeZoneStr) {
-      const offsetMatch = timeZoneStr.match(/UTC([+-]\d+)/);
+      const offsetMatch = timeZoneStr.match(/UTC([+-]?\d+)/);
       const offsetHours = offsetMatch ? parseInt(offsetMatch[1], 10) : 0;
 
       const [datePart, timePart] = dateStr.split(" ");
       const [year, month, day] = datePart.split("-").map(Number);
       const [hour, minute] = timePart.split(":").map(Number);
 
-      // ローカル時間をUTCに補正
       return new Date(Date.UTC(year, month - 1, day, hour - offsetHours, minute));
     }
 
@@ -119,14 +118,39 @@
       return div;
     }
 
-    window.onload = loadSchedule;
+    async function displayUserInfo() {
+      try {
+        const res = await fetch("https://ipapi.co/json/");
+        const data = await res.json();
+
+        const country = data.country_name;
+        const countryCode = data.country_code.toLowerCase();
+        const timeZone = data.timezone;
+
+        const infoEl = document.getElementById("user-info");
+        infoEl.innerHTML = `<img src="https://flagcdn.com/w40/${countryCode}.png" class="inline mr-1 h-4 w-6"> 
+          You are in ${country}, Timezone: ${timeZone}`;
+      } catch (error) {
+        console.error("Failed to fetch location:", error);
+        // Fallback: show browser-based info
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const infoEl = document.getElementById("user-info");
+        infoEl.textContent = `Your timezone: ${timeZone}`;
+      }
+    }
+
+    window.onload = () => {
+      displayUserInfo();
+      loadSchedule();
+    };
   </script>
 </head>
 <body class="bg-gray-100 text-gray-900">
   <div class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-extrabold mb-8 text-center text-red-700 tracking-tight">
-      F1 2025 Schedule - Local Time
+    <h1 class="text-4xl font-extrabold mb-4 text-center text-red-700 tracking-tight">
+      F1 2025 Schedule @ Your Local Time
     </h1>
+    <p id="user-info" class="text-center text-sm text-gray-600 mb-6"></p>
     <div id="next-gp" class="mb-10"></div>
     <div id="schedule" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
