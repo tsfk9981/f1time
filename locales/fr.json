@@ -1,0 +1,40 @@
+{
+  "title": "Calendrier F1 2025 - Heure locale",
+  "timezoneLabel": "Vous êtes en {country}, fuseau horaire : {tz}",
+  "nextRace": "Prochain Grand Prix",
+  "sessions": {
+    "FP1": "Essais Libres 1",
+    "FP2": "Essais Libres 2",
+    "FP3": "Essais Libres 3",
+    "Sprint Qualifying": "Qualifications Sprint",
+    "Sprint": "Sprint",
+    "Qualifying": "Qualifications",
+    "Race": "Course"
+  },
+  "gps": {
+    "Japan": "Japon",
+    "Australia": "Australie",
+    "China": "Chine",
+    "Bahrain": "Bahreïn",
+    "Saudi Arabia": "Arabie Saoudite",
+    "Miami": "Miami",
+    "Emilia Romagna": "Émilie-Romagne",
+    "Monaco": "Monaco",
+    "Spain": "Espagne",
+    "Canada": "Canada",
+    "Austria": "Autriche",
+    "United Kingdom": "Royaume-Uni",
+    "Belgium": "Belgique",
+    "Hungary": "Hongrie",
+    "Netherlands": "Pays-Bas",
+    "Italy": "Italie",
+    "Azerbaijan": "Azerbaïdjan",
+    "Singapore": "Singapour",
+    "USA": "États-Unis",
+    "Mexico": "Mexique",
+    "São Paulo": "São Paulo",
+    "Las Vegas": "Las Vegas",
+    "Qatar": "Qatar",
+    "Abu Dhabi": "Abou Dabi"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "title": "F1 2025 スケジュール - 現地時間",
+  "timezoneLabel": "{country}にお住まいですね。タイムゾーン: {tz}",
+  "nextRace": "次のグランプリ",
+  "sessions": {
+    "FP1": "フリー走行1",
+    "FP2": "フリー走行2",
+    "FP3": "フリー走行3",
+    "Sprint Qualifying": "スプリント予選",
+    "Sprint": "スプリント",
+    "Qualifying": "予選",
+    "Race": "決勝"
+  },
+  "gps": {
+    "Japan": "日本",
+    "Australia": "オーストラリア",
+    "China": "中国",
+    "Bahrain": "バーレーン",
+    "Saudi Arabia": "サウジアラビア",
+    "Miami": "マイアミ",
+    "Emilia Romagna": "エミリア・ロマーニャ",
+    "Monaco": "モナコ",
+    "Spain": "スペイン",
+    "Canada": "カナダ",
+    "Austria": "オーストリア",
+    "United Kingdom": "イギリス",
+    "Belgium": "ベルギー",
+    "Hungary": "ハンガリー",
+    "Netherlands": "オランダ",
+    "Italy": "イタリア",
+    "Azerbaijan": "アゼルバイジャン",
+    "Singapore": "シンガポール",
+    "USA": "アメリカ",
+    "Mexico": "メキシコ",
+    "São Paulo": "サンパウロ",
+    "Las Vegas": "ラスベガス",
+    "Qatar": "カタール",
+    "Abu Dhabi": "アブダビ"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "title": "F1 2025 Zeitplan – Ortszeit",
+  "timezoneLabel": "Sie befinden sich in {country}, Zeitzone: {tz}",
+  "nextRace": "Nächster Grand Prix",
+  "sessions": {
+    "FP1": "Freies Training 1",
+    "FP2": "Freies Training 2",
+    "FP3": "Freies Training 3",
+    "Sprint Qualifying": "Sprint-Qualifying",
+    "Sprint": "Sprint",
+    "Qualifying": "Qualifying",
+    "Race": "Rennen"
+  },
+  "gps": {
+    "Japan": "Japan",
+    "Australia": "Australien",
+    "China": "China",
+    "Bahrain": "Bahrain",
+    "Saudi Arabia": "Saudi-Arabien",
+    "Miami": "Miami",
+    "Emilia Romagna": "Emilia-Romagna",
+    "Monaco": "Monaco",
+    "Spain": "Spanien",
+    "Canada": "Kanada",
+    "Austria": "Österreich",
+    "United Kingdom": "Vereinigtes Königreich",
+    "Belgium": "Belgien",
+    "Hungary": "Ungarn",
+    "Netherlands": "Niederlande",
+    "Italy": "Italien",
+    "Azerbaijan": "Aserbaidschan",
+    "Singapore": "Singapur",
+    "USA": "USA",
+    "Mexico": "Mexiko",
+    "São Paulo": "São Paulo",
+    "Las Vegas": "Las Vegas",
+    "Qatar": "Katar",
+    "Abu Dhabi": "Abu Dhabi"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "title": "F1 2025 Schedule @ Your Local Time",
+  "timezoneLabel": "You are in {country}, Timezone: {tz}",
+  "nextRace": "Next Grand Prix",
+  "sessions": {
+    "FP1": "Practice 1",
+    "FP2": "Practice 2",
+    "FP3": "Practice 3",
+    "Sprint Qualifying": "Sprint Qualifying",
+    "Sprint": "Sprint",
+    "Qualifying": "Qualifying",
+    "Race": "Race"
+  },
+  "gps": {
+    "Japan": "Japan",
+    "Australia": "Australia",
+    "China": "China",
+    "Bahrain": "Bahrain",
+    "Saudi Arabia": "Saudi Arabia",
+    "Miami": "Miami",
+    "Emilia Romagna": "Emilia Romagna",
+    "Monaco": "Monaco",
+    "Spain": "Spain",
+    "Canada": "Canada",
+    "Austria": "Austria",
+    "United Kingdom": "United Kingdom",
+    "Belgium": "Belgium",
+    "Hungary": "Hungary",
+    "Netherlands": "Netherlands",
+    "Italy": "Italy",
+    "Azerbaijan": "Azerbaijan",
+    "Singapore": "Singapore",
+    "USA": "USA",
+    "Mexico": "Mexico",
+    "São Paulo": "São Paulo",
+    "Las Vegas": "Las Vegas",
+    "Qatar": "Qatar",
+    "Abu Dhabi": "Abu Dhabi"
+  }
+}

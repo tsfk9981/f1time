@@ -1,0 +1,40 @@
+{
+  "title": "F1 2025 일정 - 현지 시간",
+  "timezoneLabel": "{country}에 계시네요. 시간대: {tz}",
+  "nextRace": "다음 그랑프리",
+  "sessions": {
+    "FP1": "연습 주행 1",
+    "FP2": "연습 주행 2",
+    "FP3": "연습 주행 3",
+    "Sprint Qualifying": "스프린트 예선",
+    "Sprint": "스프린트",
+    "Qualifying": "예선",
+    "Race": "결승"
+  },
+  "gps": {
+    "Japan": "일본",
+    "Australia": "호주",
+    "China": "중국",
+    "Bahrain": "바레인",
+    "Saudi Arabia": "사우디아라비아",
+    "Miami": "마이애미",
+    "Emilia Romagna": "에밀리아로마냐",
+    "Monaco": "모나코",
+    "Spain": "스페인",
+    "Canada": "캐나다",
+    "Austria": "오스트리아",
+    "United Kingdom": "영국",
+    "Belgium": "벨기에",
+    "Hungary": "헝가리",
+    "Netherlands": "네덜란드",
+    "Italy": "이탈리아",
+    "Azerbaijan": "아제르바이잔",
+    "Singapore": "싱가포르",
+    "USA": "미국",
+    "Mexico": "멕시코",
+    "São Paulo": "상파울루",
+    "Las Vegas": "라스베이거스",
+    "Qatar": "카타르",
+    "Abu Dhabi": "아부다비"
+  }
+}

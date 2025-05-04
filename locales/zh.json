@@ -1,0 +1,40 @@
+{
+  "title": "F1 2025 赛程表 - 本地时间",
+  "timezoneLabel": "您在 {country}，时区：{tz}",
+  "nextRace": "下一场大奖赛",
+  "sessions": {
+    "FP1": "自由练习1",
+    "FP2": "自由练习2",
+    "FP3": "自由练习3",
+    "Sprint Qualifying": "冲刺排位赛",
+    "Sprint": "冲刺赛",
+    "Qualifying": "排位赛",
+    "Race": "正赛"
+  },
+  "gps": {
+    "Japan": "日本",
+    "Australia": "澳大利亚",
+    "China": "中国",
+    "Bahrain": "巴林",
+    "Saudi Arabia": "沙特阿拉伯",
+    "Miami": "迈阿密",
+    "Emilia Romagna": "艾米利亚-罗马涅",
+    "Monaco": "摩纳哥",
+    "Spain": "西班牙",
+    "Canada": "加拿大",
+    "Austria": "奥地利",
+    "United Kingdom": "英国",
+    "Belgium": "比利时",
+    "Hungary": "匈牙利",
+    "Netherlands": "荷兰",
+    "Italy": "意大利",
+    "Azerbaijan": "阿塞拜疆",
+    "Singapore": "新加坡",
+    "USA": "美国",
+    "Mexico": "墨西哥",
+    "São Paulo": "圣保罗",
+    "Las Vegas": "拉斯维加斯",
+    "Qatar": "卡塔尔",
+    "Abu Dhabi": "阿布扎比"
+  }
+}
