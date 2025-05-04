@@ -3,14 +3,259 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>F1 2025 Schedule @ Your Local Time</title>
+  <title>F1 2025 Schedule - Local Time</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    const translations = {
+      en: {
+        title: "F1 2025 Schedule - Local Time",
+        timezoneLabel: "You are in {country}, Timezone: {tz}",
+        nextRace: "Next Grand Prix",
+        sessions: {
+          "FP1": "Practice 1",
+          "FP2": "Practice 2",
+          "FP3": "Practice 3",
+          "Sprint Qualifying": "Sprint Qualifying",
+          "Sprint": "Sprint",
+          "Qualifying": "Qualifying",
+          "Race": "Race"
+        },
+        gps: {
+          "Japan": "Japan",
+          "Australia": "Australia",
+          "China": "China",
+          "Bahrain": "Bahrain",
+          "Saudi Arabia": "Saudi Arabia",
+          "Miami": "Miami",
+          "Emilia Romagna": "Emilia Romagna",
+          "Monaco": "Monaco",
+          "Spain": "Spain",
+          "Canada": "Canada",
+          "Austria": "Austria",
+          "United Kingdom": "United Kingdom",
+          "Belgium": "Belgium",
+          "Hungary": "Hungary",
+          "Netherlands": "Netherlands",
+          "Italy": "Italy",
+          "Azerbaijan": "Azerbaijan",
+          "Singapore": "Singapore",
+          "USA": "USA",
+          "Mexico": "Mexico",
+          "São Paulo": "São Paulo",
+          "Las Vegas": "Las Vegas",
+          "Qatar": "Qatar",
+          "Abu Dhabi": "Abu Dhabi"
+        }
+      },
+      ja: {
+        title: "F1 2025 スケジュール - 現地時間",
+        timezoneLabel: "{country}にお住まいですね。タイムゾーン: {tz}",
+        nextRace: "次のグランプリ",
+        sessions: {
+          "FP1": "フリー走行1",
+          "FP2": "フリー走行2",
+          "FP3": "フリー走行3",
+          "Sprint Qualifying": "スプリント予選",
+          "Sprint": "スプリント",
+          "Qualifying": "予選",
+          "Race": "決勝"
+        },
+        gps: {
+          "Japan": "日本",
+          "Australia": "オーストラリア",
+          "China": "中国",
+          "Bahrain": "バーレーン",
+          "Saudi Arabia": "サウジアラビア",
+          "Miami": "マイアミ",
+          "Emilia Romagna": "エミリア・ロマーニャ",
+          "Monaco": "モナコ",
+          "Spain": "スペイン",
+          "Canada": "カナダ",
+          "Austria": "オーストリア",
+          "United Kingdom": "イギリス",
+          "Belgium": "ベルギー",
+          "Hungary": "ハンガリー",
+          "Netherlands": "オランダ",
+          "Italy": "イタリア",
+          "Azerbaijan": "アゼルバイジャン",
+          "Singapore": "シンガポール",
+          "USA": "アメリカ",
+          "Mexico": "メキシコ",
+          "São Paulo": "サンパウロ",
+          "Las Vegas": "ラスベガス",
+          "Qatar": "カタール",
+          "Abu Dhabi": "アブダビ"
+        }
+      },
+      de: {
+        title: "F1 2025 Zeitplan - Ortszeit",
+        timezoneLabel: "Sie befinden sich in {country}, Zeitzone: {tz}",
+        nextRace: "Nächster Grand Prix",
+        sessions: {
+          "FP1": "Training 1",
+          "FP2": "Training 2",
+          "FP3": "Training 3",
+          "Sprint Qualifying": "Sprint-Qualifying",
+          "Sprint": "Sprint",
+          "Qualifying": "Qualifying",
+          "Race": "Rennen"
+        },
+        gps: {
+          "Japan": "Japan",
+          "Australia": "Australien",
+          "China": "China",
+          "Bahrain": "Bahrain",
+          "Saudi Arabia": "Saudi-Arabien",
+          "Miami": "Miami",
+          "Emilia Romagna": "Emilia-Romagna",
+          "Monaco": "Monaco",
+          "Spain": "Spanien",
+          "Canada": "Kanada",
+          "Austria": "Österreich",
+          "United Kingdom": "Großbritannien",
+          "Belgium": "Belgien",
+          "Hungary": "Ungarn",
+          "Netherlands": "Niederlande",
+          "Italy": "Italien",
+          "Azerbaijan": "Aserbaidschan",
+          "Singapore": "Singapur",
+          "USA": "USA",
+          "Mexico": "Mexiko",
+          "São Paulo": "São Paulo",
+          "Las Vegas": "Las Vegas",
+          "Qatar": "Katar",
+          "Abu Dhabi": "Abu Dhabi"
+        }
+      },
+
+      fr: {
+        title: "Calendrier F1 2025 - Heure locale",
+        timezoneLabel: "Vous êtes en {country}, fuseau horaire : {tz}",
+        nextRace: "Prochain Grand Prix",
+        sessions: {
+          "FP1": "Essais Libres 1",
+          "FP2": "Essais Libres 2",
+          "FP3": "Essais Libres 3",
+          "Sprint Qualifying": "Qualifications Sprint",
+          "Sprint": "Sprint",
+          "Qualifying": "Qualifications",
+          "Race": "Course"
+        },
+        gps: {
+          "Japan": "Japon",
+          "Australia": "Australie",
+          "China": "Chine",
+          "Bahrain": "Bahreïn",
+          "Saudi Arabia": "Arabie Saoudite",
+          "Miami": "Miami",
+          "Emilia Romagna": "Émilie-Romagne",
+          "Monaco": "Monaco",
+          "Spain": "Espagne",
+          "Canada": "Canada",
+          "Austria": "Autriche",
+          "United Kingdom": "Royaume-Uni",
+          "Belgium": "Belgique",
+          "Hungary": "Hongrie",
+          "Netherlands": "Pays-Bas",
+          "Italy": "Italie",
+          "Azerbaijan": "Azerbaïdjan",
+          "Singapore": "Singapour",
+          "USA": "États-Unis",
+          "Mexico": "Mexique",
+          "São Paulo": "São Paulo",
+          "Las Vegas": "Las Vegas",
+          "Qatar": "Qatar",
+          "Abu Dhabi": "Abou Dabi"
+        }
+      },
+
+      es: {
+        title: "Calendario F1 2025 - Hora local",
+        timezoneLabel: "Estás en {country}, Zona horaria: {tz}",
+        nextRace: "Próximo Gran Premio",
+        sessions: {
+          "FP1": "Práctica 1",
+          "FP2": "Práctica 2",
+          "FP3": "Práctica 3",
+          "Sprint Qualifying": "Clasificación Sprint",
+          "Sprint": "Sprint",
+          "Qualifying": "Clasificación",
+          "Race": "Carrera"
+        },
+        gps: {
+          "Japan": "Japón",
+          "Australia": "Australia",
+          "China": "China",
+          "Bahrain": "Baréin",
+          "Saudi Arabia": "Arabia Saudita",
+          "Miami": "Miami",
+          "Emilia Romagna": "Emilia-Romaña",
+          "Monaco": "Mónaco",
+          "Spain": "España",
+          "Canada": "Canadá",
+          "Austria": "Austria",
+          "United Kingdom": "Reino Unido",
+          "Belgium": "Bélgica",
+          "Hungary": "Hungría",
+          "Netherlands": "Países Bajos",
+          "Italy": "Italia",
+          "Azerbaijan": "Azerbaiyán",
+          "Singapore": "Singapur",
+          "USA": "EE. UU.",
+          "Mexico": "México",
+          "São Paulo": "São Paulo",
+          "Las Vegas": "Las Vegas",
+          "Qatar": "Catar",
+          "Abu Dhabi": "Abu Dabi"
+        }
+      }
+    };
+
+    const userLang = (navigator.language || "en").split("-")[0];
+    const langCode = translations[userLang] ? userLang : "en";
+
+    function t(key, vars = {}) {
+      const dict = translations[langCode] || translations["en"];
+      let text = dict[key] || key;
+      for (const [k, v] of Object.entries(vars)) {
+        text = text.replace(`{${k}}`, v);
+      }
+      return text;
+    }
+
+    function translateSession(sessionKey) {
+      const sessions = translations[langCode]?.sessions || translations["en"].sessions;
+      return sessions[sessionKey] || sessionKey;
+    }
+    
+    function translateGP(gpName) {
+      const gps = translations[langCode]?.gps || translations["en"].gps;
+      return gps[gpName] || gpName;
+    }
+
+    async function displayUserInfo() {
+      try {
+        const res = await fetch("https://ipapi.co/json/");
+        const data = await res.json();
+        const country = data.country_name;
+        const countryCode = data.country_code.toLowerCase();
+        const timeZone = data.timezone;
+
+        document.title = t("title");
+        document.querySelector("h1").textContent = t("title");
+        document.getElementById("user-info").innerHTML =
+          `<img src="https://flagcdn.com/w40/${countryCode}.png" class="inline mr-1 h-4 w-6"> ` +
+          t("timezoneLabel", { country, tz: timeZone });
+      } catch (err) {
+        console.error("IP API failed", err);
+        document.getElementById("user-info").textContent = `Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
+      }
+    }
+
     async function loadSchedule() {
       const response = await fetch("f1_2025_schedule.json");
       const data = await response.json();
       const container = document.getElementById("schedule");
-
       const now = new Date();
       let nextGP = null;
       let nextGPTime = null;
@@ -38,11 +283,9 @@
     function parseDateWithOffset(dateStr, timeZoneStr) {
       const offsetMatch = timeZoneStr.match(/UTC([+-]?\d+)/);
       const offsetHours = offsetMatch ? parseInt(offsetMatch[1], 10) : 0;
-
       const [datePart, timePart] = dateStr.split(" ");
       const [year, month, day] = datePart.split("-").map(Number);
       const [hour, minute] = timePart.split(":").map(Number);
-
       return new Date(Date.UTC(year, month - 1, day, hour - offsetHours, minute));
     }
 
@@ -63,7 +306,7 @@
         ? "text-3xl font-extrabold text-red-700 mb-2 tracking-tight"
         : "text-lg font-semibold text-red-700 mb-2";
 
-      div.innerHTML = `<h2 class="${titleClass}">${flagImg}Rd${roundNo} ${gp}</h2>`;
+      div.innerHTML = `<h2 class="${titleClass}">${flagImg}Rd${roundNo} ${translateGP(gp)}</h2>`;
 
       let soonestEvent = null;
       let soonestTime = null;
@@ -107,7 +350,7 @@
         tdName.className = `${
           highlight ? "text-base lg:text-lg text-gray-700" : "text-sm text-gray-700"
         } py-1`;
-        tdName.textContent = event;
+        tdName.textContent = translateSession(event);
 
         tr.appendChild(tdTime);
         tr.appendChild(tdName);
@@ -118,27 +361,6 @@
       return div;
     }
 
-    async function displayUserInfo() {
-      try {
-        const res = await fetch("https://ipapi.co/json/");
-        const data = await res.json();
-
-        const country = data.country_name;
-        const countryCode = data.country_code.toLowerCase();
-        const timeZone = data.timezone;
-
-        const infoEl = document.getElementById("user-info");
-        infoEl.innerHTML = `<img src="https://flagcdn.com/w40/${countryCode}.png" class="inline mr-1 h-4 w-6"> 
-          You are in ${country}, Timezone: ${timeZone}`;
-      } catch (error) {
-        console.error("Failed to fetch location:", error);
-        // Fallback: show browser-based info
-        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const infoEl = document.getElementById("user-info");
-        infoEl.textContent = `Your timezone: ${timeZone}`;
-      }
-    }
-
     window.onload = () => {
       displayUserInfo();
       loadSchedule();
@@ -147,8 +369,8 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
   <div class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-extrabold mb-4 text-center text-red-700 tracking-tight">
-      F1 2025 Schedule @ Your Local Time
+    <h1 class="text-4xl font-extrabold mb-8 text-center text-red-700 tracking-tight">
+      F1 2025 Schedule - Local Time
     </h1>
     <p id="user-info" class="text-center text-sm text-gray-600 mb-6"></p>
     <div id="next-gp" class="mb-10"></div>
